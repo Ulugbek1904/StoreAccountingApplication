@@ -2,6 +2,11 @@
 {
     public class LoadMenu : ILoadMenu
     {
+        IMenegerService menegerservice;
+        public LoadMenu()
+        {
+            menegerservice = new MenegerService();
+        }
 
         public void LoadExsitingMenu()
         {
@@ -12,7 +17,8 @@
                 {
                     Console.WriteLine("" +
                         "1. Enter as an store Meneger\n"
-                        + "2. Enter as a client\n");
+                        + "2. Enter as a client\n" +
+                        "3. Exit program\n");
 
                     Console.Write("Enter option : ");
                     string input = Console.ReadLine();
@@ -20,11 +26,12 @@
                     switch (intInput)
                     {
                         case 1:
-                            Console.WriteLine("owner");
-                            continueProgram = false;
+                            menegerservice.LoadMenegerMenu();
                             break;
                         case 2:
                             Console.WriteLine("client");
+                            break;
+                        case 3:
                             continueProgram = false;
                             break;
                         default:

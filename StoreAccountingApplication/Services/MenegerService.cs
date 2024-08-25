@@ -20,7 +20,8 @@ namespace StoreAccountingApplication.Services
                 {
                     Console.WriteLine("" +
                         "1. Sign in\n" +
-                        "2. Create new one\n");
+                        "2. Create new one\n" +
+                        "3. Back\n");
 
                     Console.Write("Choose one : ");
                     string input = Console.ReadLine();
@@ -33,9 +34,12 @@ namespace StoreAccountingApplication.Services
                         case 2:
                             createMenegerService.CreateMeneger();
                             break;
+                        case 3:
+                            Console.Clear();
+                            continueProg = false;
+                            break;
                         default:
-                            throw new ArgumentOutOfRangeException("Enter only 1 or 2");
-
+                            throw new ArgumentOutOfRangeException("Enter only 1 or 2 or 3");
                     }
                 }
                 catch (ArgumentOutOfRangeException exc)

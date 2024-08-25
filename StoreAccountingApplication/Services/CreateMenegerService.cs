@@ -18,7 +18,7 @@ namespace StoreAccountingApplication.Services
             {
                 try
                 {
-                    Console.WriteLine("Enter passport number : ");
+                    Console.WriteLine("Enter passport series : ");
                     string passportNumber = Console.ReadLine();
 
                     if (!string.IsNullOrEmpty(passportNumber))

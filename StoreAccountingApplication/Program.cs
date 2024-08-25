@@ -15,8 +15,7 @@ namespace StoreAccountingApplication
 
             Console.WriteLine("=====Menu=====\n");            
             loadMenu.LoadExsitingMenu();
-            ICreateMenegerService service = new CreateMenegerService();
-            service.CreateMeneger();
+            
         }
     }
 }
