@@ -15,10 +15,11 @@ namespace StoreAccountingApplication.Services.MenegerServices
         public void CheckPassword()
         {   foreach (Meneger jsonMeneger in meneger)
             {
-                int attempt = 1;
+                int attempt = 0;
                 bool continueProg = true;
                 while (continueProg)
                 {
+                    attempt++;
                     if (attempt >= 4)
                     {
                         Console.Clear();
@@ -32,31 +33,32 @@ namespace StoreAccountingApplication.Services.MenegerServices
                         else
                         {
                             Console.Clear();
-                            continue;
+                            return;
                         }
-                    }
-                    Console.Write("Enter email or phoneNumber(e.g : +998....) : ");
-                    string emailOrNumber = Console.ReadLine();
-                    Console.Write("Enter password : ");
-                    string password = Console.ReadLine();
-                    if (emailOrNumber == jsonMeneger.Email || emailOrNumber == jsonMeneger.PhoneNumber)
-                    {
-                        if (password == jsonMeneger.Password)
-                        {
-                            Console.WriteLine("Welcome to meneger site");
-                            continueProg = false;
-                        }
-                        else
-                        {
-                            Console.WriteLine
-                                ("Your password is not correct.Try again");
-
-                            attempt++;
-                        }
-
                     }
                     else
-                        Console.WriteLine("email or phone Number is not correct");
+                    {
+                        Console.Write("Enter email or phoneNumber(e.g : +998....) : ");
+                        string emailOrNumber = Console.ReadLine();
+                        Console.Write("Enter password : ");
+                        string password = Console.ReadLine();
+                        if (emailOrNumber == jsonMeneger.Email || emailOrNumber == jsonMeneger.PhoneNumber)
+                        {
+                            if (password == jsonMeneger.Password)
+                            {
+                                Console.WriteLine("Welcome to meneger site");
+                                continueProg = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine
+                                    ("Your password is not correct.Try again");
+                            }
+
+                        }
+                        else
+                            Console.WriteLine("email or phone Number is not correct");
+                    }
                 }
             }
         }
@@ -72,7 +74,7 @@ namespace StoreAccountingApplication.Services.MenegerServices
                     string phoneNumber = Console.ReadLine();
                     Console.Write("Enter email address : ");
                     string emailAddress = Console.ReadLine();
-                    if (phoneNumber == null && emailAddress == null)
+                    if (phoneNumber != null && emailAddress != null)
                     {
                         if (phoneNumber == jsonMeneger.PhoneNumber && emailAddress == jsonMeneger.Email)
                         {
