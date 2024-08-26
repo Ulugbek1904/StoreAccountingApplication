@@ -1,15 +1,17 @@
 ﻿using System.Linq.Expressions;
 
-namespace StoreAccountingApplication.Services
+namespace StoreAccountingApplication.Services.MenegerServices
 {
-    public class MenegerService : IMenegerService
+    public class LoadMenegerMenu : ILoadMenegerMenu
     {
+        IAuthenticationService authenticationService;
         ICreateMenegerService createMenegerService;
-        public MenegerService()
+        public LoadMenegerMenu()
         {
+            authenticationService = new AuthenticationService();
             createMenegerService = new CreateMenegerService();
         }
-        public void LoadMenegerMenu()
+        public void LoadExistedMenu()
         {
             Console.Clear();
             Console.WriteLine("\t\t\t======Menu======");
@@ -29,7 +31,7 @@ namespace StoreAccountingApplication.Services
                     switch (intInput)
                     {
                         case 1:
-                            Console.WriteLine("Entering system");
+                            authenticationService.CheckPassword();
                             break;
                         case 2:
                             createMenegerService.CreateMeneger();

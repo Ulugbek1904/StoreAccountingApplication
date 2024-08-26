@@ -1,18 +1,21 @@
 ﻿using StoreAccountingApplication.Models;
 using System.Text.RegularExpressions;
 
-namespace StoreAccountingApplication.Services
+namespace StoreAccountingApplication.Services.MenegerServices
 {
     public class CreateMenegerService : ICreateMenegerService
     {
+        IFileService<Meneger> fileService;
         private Meneger meneger;
         public CreateMenegerService()
         {
+            fileService = new FileServiceForMeneger();
             meneger = new Meneger();
         }
 
         public void CreateMeneger()
         {
+            meneger.PassportSeries = "AD0248194";
             bool continueProgram = true;
             while (continueProgram)
             {
@@ -23,7 +26,7 @@ namespace StoreAccountingApplication.Services
 
                     if (!string.IsNullOrEmpty(passportNumber))
                     {
-                        if (passportNumber == meneger.PassportNumber)
+                        if (passportNumber == meneger.PassportSeries)
                         {
                             LoadInnerCode();
                             continueProgram = false;
@@ -49,7 +52,7 @@ namespace StoreAccountingApplication.Services
             }
         }
 
-        private void LoadInnerCode()
+        public void LoadInnerCode()
         {
             bool continueInnerProg = true;
             string phoneNumber = null;
@@ -110,11 +113,14 @@ namespace StoreAccountingApplication.Services
                             Password = password,
                             PhoneNumber = phoneNumber,
                             Email = emailAdress,
-                            PassportNumber = "AD0248194"
+                            PassportSeries = "AD0248194"
                         };
                         meneger = newMeneger;
                         continueInnerProg = false;
                         Console.WriteLine("Manager was created successfully.");
+                        fileService.WriteToFIle(meneger);
+                        Thread.Sleep(1000);
+                        Console.Clear();
                     }
                     else
                     {
@@ -130,19 +136,19 @@ namespace StoreAccountingApplication.Services
 
 
 
-        private bool isValidNumber(string number)
+        public bool isValidNumber(string number)
         {
             string pattern = @"^\+998\d{9}$";
             return Regex.IsMatch(number, pattern);
         }
 
-        private bool isValidEmail(string emailInput)
+        public bool isValidEmail(string emailInput)
         {
             string pattern = @"^\w+@gmail\.(uz|ru|com)$";
             return Regex.IsMatch(emailInput, pattern);
         }
 
-        private bool isValidPassword(string passwordInput)
+        public bool isValidPassword(string passwordInput)
         {
             if (string.IsNullOrEmpty(passwordInput))
             {

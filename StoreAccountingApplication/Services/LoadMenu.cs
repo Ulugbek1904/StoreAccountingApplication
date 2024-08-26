@@ -1,11 +1,13 @@
-﻿namespace StoreAccountingApplication.Services
+﻿using StoreAccountingApplication.Services.MenegerServices;
+
+namespace StoreAccountingApplication.Services
 {
     public class LoadMenu : ILoadMenu
     {
-        IMenegerService menegerservice;
+        ILoadMenegerMenu menegermenu;
         public LoadMenu()
         {
-            menegerservice = new MenegerService();
+            menegermenu = new LoadMenegerMenu();
         }
 
         public void LoadExsitingMenu()
@@ -16,8 +18,8 @@
                 try
                 {
                     Console.WriteLine("" +
-                        "1. Enter as an store Meneger\n"
-                        + "2. Enter as a client\n" +
+                        "1. Enter as an store Meneger\n"+
+                        "2. Enter as a client\n" +
                         "3. Exit program\n");
 
                     Console.Write("Enter option : ");
@@ -26,7 +28,7 @@
                     switch (intInput)
                     {
                         case 1:
-                            menegerservice.LoadMenegerMenu();
+                            menegermenu.LoadExistedMenu();
                             break;
                         case 2:
                             Console.WriteLine("client");
