@@ -1,14 +1,17 @@
 ﻿using StoreAccountingApplication.Models;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace StoreAccountingApplication.Services.MenegerServices
 {
     public class AuthenticationService : IAuthenticationService
     {
+        IMenegerService menegerService;
         IFileService<Meneger> fileService;
         List<Meneger> meneger;
         public AuthenticationService()
         {
+            menegerService = new MenegerService();
             fileService = new FileServiceForMeneger();
             meneger = fileService.ReadFiles();
         }
@@ -29,6 +32,7 @@ namespace StoreAccountingApplication.Services.MenegerServices
                         {
                             Console.Clear();
                             ChangePassword();
+                            continueProg = false;
                         }
                         else
                         {
@@ -46,7 +50,7 @@ namespace StoreAccountingApplication.Services.MenegerServices
                         {
                             if (password == jsonMeneger.Password)
                             {
-                                Console.WriteLine("Welcome to meneger site");
+                                menegerService.LoadMenegerMenu();
                                 continueProg = false;
                             }
                             else
@@ -78,7 +82,7 @@ namespace StoreAccountingApplication.Services.MenegerServices
                     {
                         if (phoneNumber == jsonMeneger.PhoneNumber && emailAddress == jsonMeneger.Email)
                         {
-                            Console.Write("Enter new Password");
+                            Console.Write("Enter new Password : ");
                             string newPassword = Console.ReadLine();
                             Console.Write("re enter new password : ");
                             string reenteredPassword = Console.ReadLine();
@@ -86,7 +90,10 @@ namespace StoreAccountingApplication.Services.MenegerServices
                             {
                                 jsonMeneger.Password = newPassword;
                                 Console.WriteLine("password was successfully changed.");
+                                string updatedJson = JsonSerializer.Serialize(meneger);
+                                File.WriteAllText("../../../MenegerFayl.json", updatedJson);
                                 continueProg = false;
+                                return;
                             }
                         }
                         else

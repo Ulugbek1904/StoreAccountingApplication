@@ -2,11 +2,11 @@
 
 namespace StoreAccountingApplication.Services.MenegerServices
 {
-    public class LoadMenegerMenu : ILoadMenegerMenu
+    public class EnteringMenegerservices : IEnteringMenegerService
     {
         IAuthenticationService authenticationService;
         ICreateMenegerService createMenegerService;
-        public LoadMenegerMenu()
+        public EnteringMenegerservices()
         {
             authenticationService = new AuthenticationService();
             createMenegerService = new CreateMenegerService();

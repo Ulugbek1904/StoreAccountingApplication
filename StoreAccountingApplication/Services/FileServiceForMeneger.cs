@@ -6,7 +6,7 @@ namespace StoreAccountingApplication.Services
 {
     public class FileServiceForMeneger : IFileService<Meneger>
     {
-        private string path = "../../../MenegerFayl.json";
+        public string path = "../../../MenegerFayl.json";
         public FileServiceForMeneger()
         {
             EnsureFile();

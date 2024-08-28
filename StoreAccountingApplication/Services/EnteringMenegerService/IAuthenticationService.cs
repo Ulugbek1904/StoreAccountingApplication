@@ -4,5 +4,6 @@
     {
         void CheckPassword();
         void ChangePassword();
+        bool isValidPassword(string passwordInput);
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace StoreAccountingApplication.Services.MenegerServices
 {
-    public interface ILoadMenegerMenu
+    public interface IMenegerService
     {
-        void LoadExistedMenu();
+        void LoadMenegerMenu();
     }
 }

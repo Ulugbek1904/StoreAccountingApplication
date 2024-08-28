@@ -4,10 +4,10 @@ namespace StoreAccountingApplication.Services
 {
     public class LoadMenu : ILoadMenu
     {
-        ILoadMenegerMenu menegermenu;
+        IEnteringMenegerService menegermenu;
         public LoadMenu()
         {
-            menegermenu = new LoadMenegerMenu();
+            menegermenu = new EnteringMenegerservices();
         }
 
         public void LoadExsitingMenu()

@@ -7,6 +7,6 @@
 
         public string ProductDescription { get; set; }
         public string ProductPrice { get; set; }
-        public string ProductType { get; set; }        
+        public DateTime ProductExpirationDate { get; set; }        
     }
 }
