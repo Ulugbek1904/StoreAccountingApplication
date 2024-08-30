@@ -1,17 +1,16 @@
-﻿
-using StoreAccountingApplication.Models;
+﻿using StoreAccountingApplication.Models;
 using System.Text.Json;
 
 namespace StoreAccountingApplication.Services
 {
-    public class FileServiceForMeneger : IFileService<Meneger>
+    internal class FileServiceForSavingProductData : IFileService<Product>
     {
-        public string path = "../../../MenegerFayl.json";
-        public FileServiceForMeneger()
+        public string path = "../../../ProductData.json";
+        public FileServiceForSavingProductData()
         {
             EnsureFile();
         }
-        public List<Meneger> ReadFiles()
+        public List<Product> ReadFiles()
         {
             try
             {
@@ -20,9 +19,9 @@ namespace StoreAccountingApplication.Services
                     string json = reader.ReadToEnd();
                     if (string.IsNullOrEmpty(json))
                     {
-                        return new List<Meneger>();
+                        return new List<Product>();
                     }
-                    return JsonSerializer.Deserialize<List<Meneger>>(json) ?? new List<Meneger>();
+                    return JsonSerializer.Deserialize<List<Product>>(json) ?? new List<Product>();
                 }
             }
             catch (JsonException jsonEx)
@@ -39,36 +38,36 @@ namespace StoreAccountingApplication.Services
             }
         }
 
-        public void WriteToFIle(Meneger meneger)
+        public void SaveAllToFile(List<Product> data)
+        {
+            string jsonData = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true});
+            using(StreamWriter writer = new StreamWriter(path))
+            {
+                writer.WriteLine(jsonData);
+            }
+        }
+
+        public void WriteToFIle(Product type)
         {
             try
             {
-                var menegers = ReadFiles();
-                menegers.Add(meneger);
-                var jsonMenegers = JsonSerializer.Serialize(menegers, new JsonSerializerOptions { WriteIndented = true});
-                using (StreamWriter writer = new StreamWriter(path,false))
+                var products = ReadFiles();
+                products.Add(type);
+                var jsonMenegers = JsonSerializer.Serialize(products, new JsonSerializerOptions { WriteIndented = true});
+                using (StreamWriter writer = new StreamWriter(path, false))
                 {
                     writer.WriteLine(jsonMenegers);
                 }
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error writing to the file",ex);
-            }
-        }
-
-        public void SaveAllToFile(List<Meneger> data)
-        {
-            string jsonData = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true});
-            using (StreamWriter writer = new StreamWriter(path))
-            {
-                writer.WriteLine(jsonData);
+                throw new ApplicationException("Error writing to the file", ex);
             }
         }
 
         private void EnsureFile()
         {
-            
+
             if (!File.Exists(path))
             {
                 File.Create(path).Close();

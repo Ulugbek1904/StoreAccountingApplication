@@ -1,7 +1,14 @@
-﻿namespace StoreAccountingApplication.Services.MenegerServices
+﻿namespace StoreAccountingApplication.Services.EnteringMenegerService.MenegmentServices
 {
     public class MenegerService : IMenegerService
     {
+        ILoggingService loggingService;
+        IInventoryMenegment inventoryMenegment;
+        public MenegerService()
+        {
+            loggingService = new LoggingService();
+            inventoryMenegment = new InventoryMenegment();
+        }
         public void LoadMenegerMenu()
         {
             Console.Clear();
@@ -9,20 +16,20 @@
             while (continueProg)
             {
                 string menu = "" +
-                    "1. Sales Management:\n" +
-                    "2. Personnel Management:\n" +
-                    "3. Customer Management:\n" +
-                    "4. Price Management:\n" +
-                    "5. Inventory Management:\n" +
+                    "1. Sales Management Menu.\n" +
+                    "2. Personnel Management Menu.\n" +
+                    "3. Customer Management Menu.\n" +
+                    "4. Price Management Menu.\n" +
+                    "5. Inventory Management Menu.\n" +
                     "6. Back \n";
 
                 Console.WriteLine("\t\t\t=====Menu======");
                 Console.WriteLine(menu);
                 try
                 {
-                    Console.Write("choose option : ");
-                    string input = Console.ReadLine();
-                    int intInput = int.Parse(input);
+                    int intInput = loggingService.
+                        GetIntInput("Choose ana optin : ");
+
                     switch (intInput)
                     {
                         case 1:
@@ -38,10 +45,10 @@
                             Console.WriteLine("f");
                             break;
                         case 5:
-                            Console.WriteLine("g");
+                            inventoryMenegment.LoadMenu();
                             break;
                         case 6:
-                            Console.Clear(); 
+                            Console.Clear();
                             continueProg = false;
                             break;
                         default:

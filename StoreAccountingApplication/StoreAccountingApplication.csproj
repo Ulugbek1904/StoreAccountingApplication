@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Examine" Version="3.3.0" />
     <PackageReference Include="NPOI" Version="2.7.1" />
   </ItemGroup>
 

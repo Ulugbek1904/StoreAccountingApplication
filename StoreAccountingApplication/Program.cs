@@ -13,7 +13,7 @@ namespace StoreAccountingApplication
                 "Welcome to the Store account application." +
                 ""+ Environment.NewLine);
 
-            Console.WriteLine("=====Menu=====\n");            
+            Console.WriteLine("\t\t\t\t\t=====Menu=====\n");            
             loadMenu.LoadExsitingMenu();
             
         }

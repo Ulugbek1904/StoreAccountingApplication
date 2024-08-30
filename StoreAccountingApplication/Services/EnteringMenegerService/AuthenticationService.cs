@@ -1,4 +1,5 @@
 ﻿using StoreAccountingApplication.Models;
+using StoreAccountingApplication.Services.EnteringMenegerService.MenegmentServices;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
@@ -6,11 +7,13 @@ namespace StoreAccountingApplication.Services.MenegerServices
 {
     public class AuthenticationService : IAuthenticationService
     {
+        ILoggingService loggingService;
         IMenegerService menegerService;
         IFileService<Meneger> fileService;
         List<Meneger> meneger;
         public AuthenticationService()
         {
+            loggingService = new LoggingService();
             menegerService = new MenegerService();
             fileService = new FileServiceForMeneger();
             meneger = fileService.ReadFiles();
@@ -26,8 +29,7 @@ namespace StoreAccountingApplication.Services.MenegerServices
                     if (attempt >= 4)
                     {
                         Console.Clear();
-                        Console.WriteLine("Do you forget password?");
-                        string respond = Console.ReadLine().ToLower();
+                        string respond = loggingService.GetStringInput("Do you forget password?\n").ToLower();
                         if (respond == "yes" || respond == "y")
                         {
                             Console.Clear();
@@ -42,10 +44,10 @@ namespace StoreAccountingApplication.Services.MenegerServices
                     }
                     else
                     {
-                        Console.Write("Enter email or phoneNumber(e.g : +998....) : ");
-                        string emailOrNumber = Console.ReadLine();
-                        Console.Write("Enter password : ");
-                        string password = Console.ReadLine();
+                        string emailOrNumber = loggingService.
+                            GetStringInput("Enter email or phoneNumber(e.g : +998....) : "); 
+;
+                        string password = loggingService.GetStringInput("Enter password : ");
                         if (emailOrNumber == jsonMeneger.Email || emailOrNumber == jsonMeneger.PhoneNumber)
                         {
                             if (password == jsonMeneger.Password)

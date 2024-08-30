@@ -38,7 +38,7 @@ namespace StoreAccountingApplication.Services
                             break;
                         default:
                             throw new ArgumentOutOfRangeException
-                                ("Enter only 1 or 2");
+                                ("Enter only 1, 2 or 3" );
                     }
                 }
                 catch (ArgumentOutOfRangeException exc)
