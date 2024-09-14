@@ -1,12 +1,16 @@
-﻿using StoreAccountingApplication.Services;
+﻿using NPOI.SS.Formula.Functions;
+using StoreAccountingApplication.Brokers;
+using StoreAccountingApplication.Models;
+using StoreAccountingApplication.Services;
 
 namespace StoreAccountingApplication
 {
     internal class Program
     {
-        
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
+            IStorageBroker broker = new StorageBroker();
+            IStorageBroker storageBroker = new StorageBroker();
             ILoadMenu loadMenu = new LoadMenu();
 
             Console.WriteLine("\t\t\t\t" +
@@ -15,7 +19,6 @@ namespace StoreAccountingApplication
 
             Console.WriteLine("\t\t\t\t\t=====Menu=====\n");            
             loadMenu.LoadExsitingMenu();
-            
         }
     }
 }

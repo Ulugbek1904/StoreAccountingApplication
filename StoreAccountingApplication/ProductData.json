@@ -1,26 +1,18 @@
 [
   {
-    "ProductId": 1232,
-    "ProductName": "Iphone 12",
-    "Manufacturer": "Apple",
-    "ProductPrice": 800,
-    "Quantity": 33,
-    "ExpiryDate": "2032-02-23T00:00:00"
+    "ProductId": 1234,
+    "ProductName": "qwe",
+    "Manufacturer": "ozim",
+    "ProductPrice": 12,
+    "Quantity": 1,
+    "ExpiryDate": "1111-11-11T00:00:00"
   },
   {
-    "ProductId": 1222,
-    "ProductName": "Redmi Note 8",
-    "Manufacturer": "Xiomi",
-    "ProductPrice": 122,
-    "Quantity": 12,
-    "ExpiryDate": "2222-02-02T00:00:00"
-  },
-  {
-    "ProductId": 4321,
-    "ProductName": "Olma",
-    "Manufacturer": "sads",
-    "ProductPrice": 5,
-    "Quantity": 5,
-    "ExpiryDate": "2023-12-12T00:00:00"
+    "ProductId": 23,
+    "ProductName": "wq",
+    "Manufacturer": "qwe",
+    "ProductPrice": 2,
+    "Quantity": 3,
+    "ExpiryDate": "1111-01-01T00:00:00"
   }
 ]
