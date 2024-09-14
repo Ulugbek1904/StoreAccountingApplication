@@ -14,7 +14,7 @@ namespace StoreAccountingApplication.Services.EnteringMenegerService.MenegmentSe
             loggingService = new LoggingService();
             fileService = new FileServiceForSavingProductData();
         }
-        public async Task LoadMenu()
+        public async void LoadMenu()
         {
             Console.Clear();
             bool continueProg = true;
@@ -39,13 +39,13 @@ namespace StoreAccountingApplication.Services.EnteringMenegerService.MenegmentSe
                             await ShowProductStock();
                             break;
                         case 2:
-                            await ShowProductStock();
+                            await SearchProduct();
                             break;
                         case 3:
-                            await ShowProductStock();
+                            await AddNewProduct();
                             break;
                         case 4:
-                            await ShowProductStock();
+                            await EditProductData();
                             break;
                         case 5:
                             await RemoveProduct();
@@ -87,9 +87,6 @@ namespace StoreAccountingApplication.Services.EnteringMenegerService.MenegmentSe
                         $"\t[company : {Products[index].Manufacturer}]\n");
                 }
             }
-
-            Console.WriteLine("\nPress any key to return to the menu...");
-            Console.ReadKey();
         }
 
         public async Task SearchProduct()
@@ -135,8 +132,6 @@ namespace StoreAccountingApplication.Services.EnteringMenegerService.MenegmentSe
                 }
 
             }
-            Console.WriteLine("\nPress any key to return to the menu...");
-            Console.ReadKey();
         }
 
         public async Task AddNewProduct()
@@ -173,8 +168,6 @@ namespace StoreAccountingApplication.Services.EnteringMenegerService.MenegmentSe
             {
                 Console.WriteLine("Error adding product: " + ex.Message);
             }
-            Console.WriteLine("\nPress any key to return to the menu...");
-            Console.ReadKey();
         }
 
 
@@ -239,8 +232,6 @@ namespace StoreAccountingApplication.Services.EnteringMenegerService.MenegmentSe
                 }
 
             }
-            Console.WriteLine("\nPress any key to return to the menu...");
-            Console.ReadKey();
         }
 
         public async Task RemoveProduct()
@@ -287,8 +278,6 @@ namespace StoreAccountingApplication.Services.EnteringMenegerService.MenegmentSe
                 }
 
             }
-            Console.WriteLine("\nPress any key to return to the menu...");
-            Console.ReadKey();
         }
 
         //private int GetUniqueProductId(List<Product> products)

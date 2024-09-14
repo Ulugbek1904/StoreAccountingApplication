@@ -15,7 +15,7 @@ namespace StoreAccountingApplication.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<Guid>(type: "Guid", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Manufacturer = table.Column<string>(type: "nvarchar(max)", nullable: false),

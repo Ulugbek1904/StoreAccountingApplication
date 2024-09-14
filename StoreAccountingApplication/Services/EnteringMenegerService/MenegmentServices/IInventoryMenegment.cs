@@ -2,7 +2,7 @@
 {
     public interface IInventoryMenegment
     {
-        Task LoadMenu();
+        void LoadMenu();
         Task ShowProductStock();
         Task SearchProduct();
         Task AddNewProduct();
