@@ -3,10 +3,10 @@
     public interface IInventoryMenegment
     {
         void LoadMenu();
-        Task ShowProductStock();
-        Task SearchProduct();
         Task AddNewProduct();
-        Task RemoveProduct();
+        Task ShowProductStock();
+        void SearchProduct();
         Task EditProductData();
+        Task RemoveProduct();
     }
 }

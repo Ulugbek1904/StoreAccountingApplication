@@ -1,18 +1,26 @@
 [
   {
-    "ProductId": 1234,
-    "ProductName": "qwe",
+    "ProductId": "d6c813d2-2677-43f7-85e9-60f40c1285da",
+    "ProductName": "name",
     "Manufacturer": "ozim",
-    "ProductPrice": 12,
-    "Quantity": 1,
-    "ExpiryDate": "1111-11-11T00:00:00"
+    "ProductPrice": 1,
+    "Quantity": 1222,
+    "ExpiryDate": "0111-01-01T00:00:00"
   },
   {
-    "ProductId": 23,
-    "ProductName": "wq",
-    "Manufacturer": "qwe",
+    "ProductId": "8152a41b-2bf0-45f1-aaa2-d794275c419e",
+    "ProductName": "qwe",
+    "Manufacturer": "wqe",
+    "ProductPrice": 23,
+    "Quantity": 2,
+    "ExpiryDate": "1111-01-01T00:00:00"
+  },
+  {
+    "ProductId": "d05c9a7a-74f6-42fe-8b58-d96989e4ac19",
+    "ProductName": "qw",
+    "Manufacturer": "s",
     "ProductPrice": 2,
-    "Quantity": 3,
+    "Quantity": 1,
     "ExpiryDate": "1111-01-01T00:00:00"
   }
 ]

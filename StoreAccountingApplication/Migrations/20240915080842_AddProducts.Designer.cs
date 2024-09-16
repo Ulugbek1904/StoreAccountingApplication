@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StoreAccountingApplication.Brokers;
+using StoreAccountingApplication.Brokers.Storages;
 
 #nullable disable
 
 namespace StoreAccountingApplication.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20240913144855_AddContacts")]
-    partial class AddContacts
+    [Migration("20240915080842_AddProducts")]
+    partial class AddProducts
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,17 +27,14 @@ namespace StoreAccountingApplication.Migrations
 
             modelBuilder.Entity("StoreAccountingApplication.Models.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<Guid>("ProductId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Manufacturer")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductName")

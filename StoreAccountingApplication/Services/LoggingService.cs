@@ -39,5 +39,21 @@
                 }
             }
         }
+
+        public Guid GetGuidID(string prompt)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write(prompt);
+                    return Guid.Parse(Console.ReadLine());
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine($"{ex.Message} Try again!");
+                }
+            }
+        }
     }
 }
